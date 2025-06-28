@@ -7,22 +7,41 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report, confusion_matrix
 from laonlp.tokenize import word_tokenize
-import stopwordsiso as stopwords
 
 # === CONFIGURATION ===
 FILE_PATH     = 'Laos.csv'
+FILE_STOPWORDS = 'stopword.json'
 RANDOM_STATE  = 42
 TEST_SIZE     = 0.2
 MAX_FEATURES  = 4000        # maximum number of TF‑IDF features
-NGRAM_RANGE   = (1, 2)      # unigrams + bigrams
+NGRAM_RANGE   = (1, 1)      # unigrams + bigrams
 MIN_DF        = 2           # ignore terms in fewer than 2 documents
-
+MAP_LABEL = {'positive': 2, 'negative': 0, 'neutral': 1}
+REVERT_MAP_LABEL = {2: 'positive', 0: 'negative', 1: 'neutral'}
 # Load the Lao stop‑word set
-STOPWORDS_LO  = stopwords.stopwords("lo")
+STOPWORDS_LO  = None
 
+
+def load_stopwords():
+    import json
+    with open(FILE_STOPWORDS, 'r', encoding="utf-8") as f:
+        STOPWORDS_ALL = json.load(f)
+
+    # Access the first key correctly
+    first_key = next(iter(STOPWORDS_ALL.keys()))  # Get the first key using an iterator
+    words = set(STOPWORDS_ALL[first_key])  # Assuming the first key is Lao
+    return words
+
+def remove_space(text: str) -> str:
+    return text.replace(" ", "")
+
+def compose_laosara_am(s: str) -> str:
+    return s.replace('\u0ecd\u0eb2', '\u0eb3')
 
 def preprocess_text(text: str) -> str:
     text = text.lower()
+    text = remove_space(text)
+    text = compose_laosara_am(text)
     # keep only Lao unicode range and whitespace
     text = re.sub(r'[^\u0E80-\u0EFF\s]', '', text)
     tokens = word_tokenize(text)
@@ -57,7 +76,7 @@ def show_top_words(vectorizer, model, class_labels, top_n=10):
     feature_names = vectorizer.get_feature_names_out()
     for i, label in enumerate(class_labels):
         top_idx = model.feature_log_prob_[i].argsort()[::-1][:top_n]
-        print(f"\nTop {top_n} words for class '{label}':")
+        print(f"\nTop {top_n} words for class '{REVERT_MAP_LABEL[label]}':")
         for idx in top_idx:
             print(f"  {feature_names[idx]}: {model.feature_log_prob_[i][idx]:.4f}")
 
@@ -95,7 +114,13 @@ def train_and_evaluate(X_train, y_train, X_test, y_test, vectorizer, model):
 
 def main():
     print("Loading and preprocessing data...")
+    global STOPWORDS_LO  # Declare STOPWORDS_LO as global to set it
+    STOPWORDS_LO = load_stopwords()  # Load stopwords into STOPWORDS_LO
+    print("Stopwords loaded:", STOPWORDS_LO)
     data = load_data(FILE_PATH)
+    # Write preprocessed data to a new CSV file
+    data.to_csv('preprocessed_data.csv', index=False, encoding='utf-8')
+    data['label'] = data['label'].map(MAP_LABEL)
     X, y = data['text'], data['label']
 
     # Train‑test split
