@@ -77,7 +77,7 @@ text,label
 ດຽວ ທາງ ຈະຮີບ ດຳເນີນ ງານ,positive
 ແຖວ ໜ້າ ບ້ານ,neutral
 ປະກາດ ຕາມ ຫາ ຄົນ ຫາຍ ຕອນ ທາງ ຄອບຄົວ ເພີ່ນ ເປັນຫ່ວງ ແຮງ ຖ້າ ໃຜ ພົບ ເຫັນ ກະລຸນາ ຕິດຕໍ່ ເບີ,neutral
-ເຈນາຍ ເອົາມາຈາກ ໄຫ ນ,neutral
+ເຈນາຍ ເອົາມາຈາກ ໄຫ ,neutral
 ເຮີຍ ກູ ວ່າ ລະ,neutral
 ມຶງ ໃສ່ ດິ ວະ,negative
 ງາມ ໂຫດ,positive
@@ -158,7 +158,7 @@ text,label
 ຊ້ຳ,negative
 ຊຳ ຊ້ອນ,negative
 ດຸດັນ,negative
-ຕກ ມ້າ ຕາ ຢ,negative
+ຕກ ມ້າ ຕາ,negative
 ເບື່ອ,negative
 ຕາຂາວ,negative
 ຊະງັດ,negative
@@ -250,10 +250,10 @@ text,label
 ແກວ່ງ,negative
 ຂັດໃຈ,negative
 ກຼ່າວ ຫາ,negative
-ກ້າວ ກ່າ ຢ,negative
+ກ້າວ ກ່າ,negative
 ກຳຈັດ,negative
 ກັງຂາ,negative
-ກອບ ໂກ ຢ,negative
+ກອບ ໂກ,negative
 ກວນ,negative
 ກວນ ຕີນ,negative
 ກັດ,negative
@@ -269,9 +269,9 @@ text,label
 ຂັງ,negative
 ຂາດ ແຄ ຼນ,negative
 ຂາດ ທຸນ,negative
-ຂາ ຢ ຊາຕິ,negative
-ຂາ ຢ ຂີ້ ຫນ້າ,negative
-ຂາ ຢ ຫນ້າ,negative
+ຂາ ຊາຕິ,negative
+ຂາ ຂີ້ ຫນ້າ,negative
+ຂາ ຫນ້າ,negative
 ຂາ ຼງ,negative
 ຂີ້,negative
 ຂີດ່າ,negative
@@ -326,7 +326,7 @@ text,label
 ຊິງ ນຣກ ເກິ ດ,negative
 ຊິງ ສຸກ ຫ່າ ມ,negative
 ຊິງ ຫມາ ເກິ ດ,negative
-ດ້ ອ ຢ,negative
+ດ້ ອ,negative
 ດັດສັນດານ,negative
 ດັບ,negative
 ດ່າ,negative
@@ -349,7 +349,7 @@ text,label
 ຕົກ ງານ,negative
 ຕົກໃຈ,negative
 ຕັ້ງ ແງ່,negative
-ຕາ ຢ ດາບ ຫນ້າ,negative
+ຕາ ດາບ ຫນ້າ,negative
 ຕອບໂຕ້,negative
 ຕໍ່ສູ້,negative
 ຕະ ຼຸມ ບອນ,negative
@@ -385,13 +385,13 @@ text,label
 ບ່ອນ ທຳ ຼາຢ,negative
 ບາດ,negative
 ບາດຫມາງ,negative
-ບານ ປຼາ ຢ,negative
+ບານ ປຼາ,negative
 ບິດ,negative
 ບິດເບືອນ,negative
 ເບນ,negative
 ເບື່ອ,negative
 ເບື່ອ ຫນ້າ,negative
-ໂບ້ ຢ,negative
+ໂບ້,negative
 ປະຈານ,negative
 ປະ ຈາ ຣ,negative
 ປະຊົດ,negative
@@ -457,7 +457,7 @@ text,label
 ຊູ້ສາວ,negative
 ຕາຂາວ,negative
 ຕ່ຳ,negative
-ຕ່ຳ ຕ້ ອ ຢ,negative
+ຕ່ຳ ຕ້ ອ,negative
 ຕິດເຊື້ອ,negative
 ບິ່ນ,negative
 ບຸ ໋ມ,negative
@@ -511,7 +511,7 @@ text,label
 ບ ຣຣຼັຢ,negative
 ເ ຫີ ຢກ,negative
 ເ ຫີ ້ຢມ ໂຫດ,negative
-ແຫ ຢ,negative
+ແຫ,negative
 ໂຫດ ຣ້າຢ,negative
 ທຳ ສງຄ ຣາມ,negative
 ທຳ ອັນ ຕຣາຢ,negative
@@ -530,13 +530,13 @@ text,label
 ດ່າ ກຼັ ບ,negative
 ໄມ ່ຣູ້ ໄມ ່ ຊີ້,negative
 ໄມ ່ຼງຕັວ,negative
-ວຸ່ນ ວາ ຢ,negative
-ວຸ່ນ ວາ ຢ,negative
-ກ່ ອ ວຸ່ນ ວາ ຢ,negative
-ສັບ ສນ ວຸ່ນ ວາ ຢ,negative
+ວຸ່ນ ວາ,negative
+ວຸ່ນ ວາ,negative
+ກ່ ອ ວຸ່ນ ວາ,negative
+ສັບ ສນ ວຸ່ນ ວາ,negative
 ສັບ ສນ,negative
 ໄມ ່ຣູ້ ສຶກ ຕັວ,negative
-ໄມ ່ ອ ຣ່ ອ ຢ,negative
+ໄມ ່ ອ ຣ່ ອ,negative
 ໄມ ່ ເຂ້ າ,negative
 ໄມ ່ ເຈີ ຢມ ກະ ຼາຫັວ,negative
 ໄມ ່ ເຊື່ອ,negative
@@ -559,7 +559,7 @@ text,label
 ຂັບ ໄຼ່,negative
 ຂັບ ໄຼ່ ໄສ ສ່ງ,negative
 ໄກ່,negative
-ຢ,negative
+,negative
 ທຳ ຣ້າຢ,negative
 ໄມ ່ສວຢ,negative
 ໄມ ່ ສະໄມ ່ສວຢ,negative
@@ -584,7 +584,7 @@ text,label
 ກດ ຂີ່,negative
 ກັກຂັງ,negative
 ກ ຣະ ຊາກ,negative
-ກ ຣະ ວນ ກ ຣະ ວາ ຢ,negative
+ກ ຣະ ວນ ກ ຣະ ວາ,negative
 ກ ຣະ ແທກ,negative
 ກ ຣະ ທືບ,negative
 ກໍ່ກວນ,negative
@@ -608,10 +608,10 @@ text,label
 ແກວ່ງ,negative
 ຂັດໃຈ,negative
 ກຼ່າວ ຫາ,negative
-ກ້າວ ກ່າ ຢ,negative
+ກ້າວ ກ່າ,negative
 ກຳຈັດ,negative
 ກັງຂາ,negative
-ກອບ ໂກ ຢ,negative
+ກອບ ໂກ,negative
 ກວນ,negative
 ກວນ ຕີນ,negative
 ກັດ,negative
@@ -650,9 +650,9 @@ text,label
 ຂັງ,negative
 ຂາດ ແຄ ຼນ,negative
 ຂາດ ທຸນ,negative
-ຂາ ຢ ຊາຕິ,negative
-ຂາ ຢ ຂີ້ ຫນ້າ,negative
-ຂາ ຢ ຫນ້າ,negative
+ຂາ ຊາຕິ,negative
+ຂາ ຂີ້ ຫນ້າ,negative
+ຂາ ຫນ້າ,negative
 ຂາ ຼງ,negative
 ເປີ ຢກ,negative
 ຂີ້,negative
@@ -747,18 +747,18 @@ text,label
 ຝືນ,negative
 ຕກ,negative
 ຕັ້ງ ແງ່,negative
-ຕາ ຢ ດາບ ຫນ້າ,negative
+ຕາ ດາບ ຫນ້າ,negative
 ຕ ບ ຕາ,negative
 ຕຣາ ຫນ້າ,negative
 ຕ່ ອ ຕ້ານ,negative
 ຕອບໂຕ້,negative
-ຕ່ ອ ຢ,negative
+ຕ່ ອ,negative
 ຕ່ ອ ສູ້,negative
 ຕ ອ ແຫ ຼ,negative
 ຕະ ຼຸມ ບອນ,negative
 ຕັດ ຂາດ,negative
 ຕ້ານ,negative
-ຕາ ຢ,negative
+ຕາ,negative
 ຕາຍ ດ້ານ,negative
 ຕິດເຊື້ອ,negative
 ຕິດຂັດ,negative
@@ -782,7 +782,7 @@ text,label
 ບ່ອນ ທຳ ຼາຢ,negative
 ບາດ,negative
 ບາດຫມາງ,negative
-ບານ ປຼາ ຢ,negative
+ບານ ປຼາ,negative
 ບິດ,negative
 ບິດເບືອນ,negative
 ເບນ,negative
@@ -791,14 +791,14 @@ text,label
 ຂີ້ຂ້າ,negative
 ເບື່ອ,negative
 ເບື່ອ ຫນ້າ,negative
-ໂບ້ ຢ,negative
+ໂບ້,negative
 ປ ຣະ ຊດປ ຣະ ຊັນ,negative
 ປ ຣະ ທ້ວງ,negative
 ອັນ ຕຣາຢ,negative
 ປ ຣະມາ ທ,negative
 ປຣັ ບ,negative
 ຄວາມຜິດ ພຼາດ,negative
-ຖ ອ ຢ,negative
+ຖ ອ,negative
 ປ ຣາບ,negative
 ປ ຣາບ ປ ຣາມ,negative
 ປຼງ,negative
@@ -808,7 +808,7 @@ text,label
 ປຼ້ນ,negative
 ປຼ້ນ ສະ ດມ,negative
 ອ ກຕັຽຽູ,negative
-ອ ດ ຕາ ຢ,negative
+ອ ດ ຕາ,negative
 ອ ດ ນອນ,negative
 ອ ດ ຫຼັບ ອ ດ ນອນ,negative
 ໄມ ່ ແນ່ນອນ,negative
@@ -840,7 +840,7 @@ text,label
 ອຶດອັດ,negative
 ຕົກໃຈ,negative
 ຂີ້ ຂຼາດ,negative
-ຫາ ຢ,negative
+ຫາ,negative
 ເຢາະ ເຢ້ຢ,negative
 ຊັງ,negative
 ເປ ຼື ອ ງ,negative
@@ -850,7 +850,7 @@ text,label
 ພັງ ທຼາຢ,negative
 ພັງ ພິນາ,negative
 ພັງ ຢັບ ເຢິນ,negative
-ຂີ້ ອາ ຢ,negative
+ຂີ້ ອາ,negative
 ຢ່ຳ ແຢ ່,negative
 ແຢ ່ ຈັງ,negative
 ແຢ ່ ມາກ,negative
@@ -1001,13 +1001,13 @@ text,label
 ຊັດເຈນ,positive
 ຊັດແຈ້ງ,positive
 ຊັດ ແຈ໋ວ,positive
-ຊັດ ຖ້ ອ ຢ ຊັດ ຄຳ,positive
+ຊັດ ຖ້ ອ ຊັດ ຄຳ,positive
 ຊຸ່ມ ຊື້ນ,positive
 ໂປ ຣດ,positive
 ຫວານ,positive
 ຫາ ຢາກ,positive
 ເດ່ ນ,positive
-ໄມ ່ ເຄ ຢ,positive
+ໄມ ່ ເຄ,positive
 ນ່າ ກອດ,positive
 ເຕ ມ,positive
 ແຖມ,positive
@@ -1099,7 +1099,7 @@ text,label
 ຢຸດ ນິ່ງ,positive
 ເງ ີຢ ບ ສງ ບ,positive
 ຣັກສງ ບ,positive
-ມາກ ຢ,positive
+ມາກ,positive
 ຕກຼງ,positive
 ເປ ນ ກັນເອງ,positive
 ຣ ອ ບ ຄອບ,positive
@@ -1232,15 +1232,15 @@ text,label
 ເ ຫີ ້ຢ,negative
 ສັດ,negative
 ຫມາ,negative
-ຄວາ ຢ,negative
+ຄວາ,negative
 ແຣດ,negative
 ຫມາ ບ້າ,negative
-ເຊີ່ ຢ,negative
+ເຊີ່,negative
 ເງ ີ່ຢນ,negative
 ສ້ນ ຕີນ,negative
 ສັນດານ,negative
-ພ່ ອ ມຶງ ຕາ ຢ,negative
-ແມ່ ມຶງ ຕາ ຢ,negative
+ພ່ ອ ມຶງ ຕາ,negative
+ແມ່ ມຶງ ຕາ,negative
 ຊິງ ຫມາ ເກິ ດ,negative
 ຈັຽ ໄຣ,negative
 ຫມາ,negative
@@ -1252,7 +1252,7 @@ text,label
 ໄອ ເ ຫີ ້ຢ,negative
 ໄອ ສັດ,negative
 ໄອ້ ຫມາ,negative
-ໄອ້ ຄວາ ຢ,negative
+ໄອ້ ຄວາ,negative
 ນຣກ ແດກ ກ ບາ ຼ,negative
 ກວນ ສ້ນ ຕີນ,negative
 ຼ່ ອ,negative
@@ -1277,15 +1277,15 @@ text,label
 ອີ ຫນ້າ ຫມາ,negative
 ສາດ,negative
 ອີ ຟັນ ຫມາ ບ້າ,negative
-ອີ ຫນ້າ ຄວາ ຢ,negative
+ອີ ຫນ້າ ຄວາ,negative
 ໄອ້ ສ້ນ ຕີນ,negative
 ເສືອກ ພະ ຢູນ,negative
 ພ່ ອ ມຶງ,negative
 ແມ່ ມຶງ,negative
 ພ່ອງ,negative
 ແມ່ງ,negative
-ພ່ ອ ມຶງ ຕາ ຢ,negative
-ແມ່ ມຶງ ຕາ ຢ,negative
+ພ່ ອ ມຶງ ຕາ,negative
+ແມ່ ມຶງ ຕາ,negative
 ຄວຍ,negative
 ຫີ,negative
 ແດກ,negative
