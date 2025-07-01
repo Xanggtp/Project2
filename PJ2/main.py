@@ -132,19 +132,27 @@ def main():
 
     print("📥 Loading & preprocessing …")
     df = load_data(FILE_PATH, stopwords)
+
+    # Save preprocessed data
     df.to_csv("preprocessed_data.csv", index=False, encoding="utf-8")
 
+    # Map and filter labels
     df["label"] = df["label"].map(MAP_LABEL)
+    df = df.dropna(subset=["label"])  # ✅ Fix to avoid NaN label errors
+
+    # Split data
     X_train, X_test, y_train, y_test = train_test_split(
         df["text"], df["label"], test_size=TEST_SIZE, random_state=RANDOM_STATE
     )
 
+    # Vectorize
     X_train_vec, X_test_vec, vectorizer = vectorize_text(X_train, X_test)
 
+    # Models to evaluate
     models = [
-        ("MultinomialNB", MultinomialNB(alpha=0.1)),
+        ("MultinomialNB_LAO", MultinomialNB(alpha=0.1)),
         (
-            "LogisticRegression",
+            "LogisticRegression_LAO",
             LogisticRegression(
                 C=1.0,
                 max_iter=1000,
@@ -154,7 +162,7 @@ def main():
                 random_state=RANDOM_STATE,
             ),
         ),
-        ("LinearSVC", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
+        ("LinearSVC_LAO", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
     ]
 
     for name, clf in models:
