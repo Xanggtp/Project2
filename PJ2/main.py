@@ -42,7 +42,8 @@ def remove_space(text: str) -> str:
     return text.replace(" ", "")
 
 def compose_laosara_am(s: str) -> str:
-    return s.replace("\u0ecd\u0eb2", "\u0eb3")
+    s = s.replace('\u0ec0\u0ec0', '\u0ec1') # ເ ເ -> ແ
+    return s.replace("\u0ecd\u0eb2", "\u0eb3") # ່ + າ -> ຳ
 
 def preprocess_text(text: str, stopwords: set[str]) -> str:
     text = compose_laosara_am(remove_space(text.lower()))
@@ -132,27 +133,21 @@ def main():
 
     print("📥 Loading & preprocessing …")
     df = load_data(FILE_PATH, stopwords)
-
-    # Save preprocessed data
     df.to_csv("preprocessed_data.csv", index=False, encoding="utf-8")
 
-    # Map and filter labels
     df["label"] = df["label"].map(MAP_LABEL)
-    df = df.dropna(subset=["label"])  # ✅ Fix to avoid NaN label errors
+    df = df.dropna(subset=["label"])  # 👈 FIX: Remove rows with unmapped labels
 
-    # Split data
     X_train, X_test, y_train, y_test = train_test_split(
         df["text"], df["label"], test_size=TEST_SIZE, random_state=RANDOM_STATE
     )
 
-    # Vectorize
     X_train_vec, X_test_vec, vectorizer = vectorize_text(X_train, X_test)
 
-    # Models to evaluate
     models = [
-        ("MultinomialNB_LAO", MultinomialNB(alpha=0.1)),
+        ("MultinomialNB", MultinomialNB(alpha=0.1)),
         (
-            "LogisticRegression_LAO",
+            "LogisticRegression",
             LogisticRegression(
                 C=1.0,
                 max_iter=1000,
@@ -162,7 +157,7 @@ def main():
                 random_state=RANDOM_STATE,
             ),
         ),
-        ("LinearSVC_LAO", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
+        ("LinearSVC", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
     ]
 
     for name, clf in models:
