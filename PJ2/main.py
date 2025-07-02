@@ -42,8 +42,8 @@ def remove_space(text: str) -> str:
     return text.replace(" ", "")
 
 def compose_laosara_am(s: str) -> str:
-    s = s.replace('\u0ec0\u0ec0', '\u0ec1') # ເ ເ -> ແ
-    return s.replace("\u0ecd\u0eb2", "\u0eb3") # ່ + າ -> ຳ
+    s = s.replace('\u0ec0\u0ec0', '\u0ec1') # ເ ເ -> /u0ec0/u0ec0 != ແ -> /u0ec1
+    return s.replace("\u0ecd\u0eb2", "\u0eb3") # ່  າ -> /u0ecd/u0eb2 !=  ຳ -> \u0eb3
 
 def preprocess_text(text: str, stopwords: set[str]) -> str:
     text = compose_laosara_am(remove_space(text.lower()))
