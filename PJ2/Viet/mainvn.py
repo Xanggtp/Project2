@@ -1,4 +1,4 @@
-# sentiment_pipeline_vietnamese.py
+# mainvn.py
 import re
 import json
 import pandas as pd
@@ -17,15 +17,16 @@ from sklearn.metrics import (
     accuracy_score,
     f1_score,
 )
+from joblib import dump
 
 # === CONFIGURATION ===========================================================
-FILE_PATH     = "Vietnamese.csv"
+FILE_PATH      = "Vietnamese.csv"
 FILE_STOPWORDS = "vn_stopword.json"
-RANDOM_STATE  = 42
-TEST_SIZE     = 0.2
-MAX_FEATURES  = 4000
-NGRAM_RANGE   = (1, 2)
-MIN_DF        = 2
+RANDOM_STATE   = 42
+TEST_SIZE      = 0.2
+MAX_FEATURES   = 4000
+NGRAM_RANGE    = (1, 2)
+MIN_DF         = 2
 
 MAP_LABEL        = {"positive": 2, "negative": 0, "neutral": 1}
 REVERT_MAP_LABEL = {v: k for k, v in MAP_LABEL.items()}
@@ -39,7 +40,6 @@ def load_stopwords(path: str) -> set[str]:
 
 def preprocess_text(text: str, stopwords: set[str]) -> str:
     text = text.lower()
-    # Giữ lại tiếng Việt + dấu + khoảng trắng
     text = re.sub(r"[^a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễ"
                   r"ìíịỉĩòóọỏõôồốộổỗơờớợởỡ"
                   r"ùúụủũưừứựửữỳýỵỷỹđ\s]", "", text)
@@ -128,7 +128,7 @@ def main():
 
     print("📥 Đang tải và tiền xử lý dữ liệu…")
     df = load_data(FILE_PATH, stopwords)
-    df = df[df["label"].isin(MAP_LABEL)]  # đảm bảo nhãn hợp lệ
+    df = df[df["label"].isin(MAP_LABEL)]  # chỉ lấy nhãn hợp lệ
     df["label"] = df["label"].map(MAP_LABEL)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -138,9 +138,9 @@ def main():
     X_train_vec, X_test_vec, vectorizer = vectorize_text(X_train, X_test)
 
     models = [
-        ("MultinomialNB_VN", MultinomialNB(alpha=0.1)),
+        ("MultinomialNB", MultinomialNB(alpha=0.1)),
         (
-            "LogisticRegression_VN",
+            "LogisticRegression",
             LogisticRegression(
                 C=1.0,
                 max_iter=1000,
@@ -150,11 +150,18 @@ def main():
                 random_state=RANDOM_STATE,
             ),
         ),
-        ("LinearSVC_VN", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
+        ("LinearSVC", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
     ]
 
     for name, clf in models:
         evaluate(name, clf, vectorizer, X_train_vec, y_train, X_test_vec, y_test)
+
+    # === Save vectorizer and models ===
+    dump(vectorizer, "vectorizer_vn.joblib")
+    dump(models[0][1], "nb_model_vn.joblib")
+    dump(models[1][1], "lr_model_vn.joblib")
+    dump(models[2][1], "svm_model_vn.joblib")
+    print("✅ Đã lưu vectorizer và 3 mô hình vào file .joblib.")
 
 if __name__ == "__main__":
     main()

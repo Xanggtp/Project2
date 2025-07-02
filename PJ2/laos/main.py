@@ -1,4 +1,4 @@
-# sentiment_pipeline_laos.py
+# main.py
 import re
 import json
 import pandas as pd
@@ -18,15 +18,16 @@ from sklearn.metrics import (
     f1_score,
 )
 from laonlp.tokenize import word_tokenize
+from joblib import dump
 
 # === CONFIGURATION ===========================================================
-FILE_PATH     = "Laos.csv"
+FILE_PATH      = "Laos.csv"
 FILE_STOPWORDS = "stopword.json"
-RANDOM_STATE  = 42
-TEST_SIZE     = 0.2
-MAX_FEATURES  = 4000
-NGRAM_RANGE   = (1, 2)   # uni- + bi-gram
-MIN_DF        = 2
+RANDOM_STATE   = 42
+TEST_SIZE      = 0.2
+MAX_FEATURES   = 4000
+NGRAM_RANGE    = (1, 2)
+MIN_DF         = 2
 
 MAP_LABEL        = {"positive": 2, "negative": 0, "neutral": 1}
 REVERT_MAP_LABEL = {v: k for k, v in MAP_LABEL.items()}
@@ -42,8 +43,8 @@ def remove_space(text: str) -> str:
     return text.replace(" ", "")
 
 def compose_laosara_am(s: str) -> str:
-    s = s.replace('\u0ec0\u0ec0', '\u0ec1') # ເ ເ -> /u0ec0/u0ec0 != ແ -> /u0ec1
-    return s.replace("\u0ecd\u0eb2", "\u0eb3") # ່  າ -> /u0ecd/u0eb2 !=  ຳ -> \u0eb3
+    s = s.replace('\u0ec0\u0ec0', '\u0ec1')  # ເ ເ -> ແ
+    return s.replace("\u0ecd\u0eb2", "\u0eb3")  # ່ + າ -> ຳ
 
 def preprocess_text(text: str, stopwords: set[str]) -> str:
     text = compose_laosara_am(remove_space(text.lower()))
@@ -70,9 +71,9 @@ def vectorize_text(train_texts, test_texts):
 
 # === EVALUATION HELPERS ======================================================
 def _get_weights(model):
-    if hasattr(model, "feature_log_prob_"):        # Naive Bayes
+    if hasattr(model, "feature_log_prob_"):
         return model.feature_log_prob_
-    if hasattr(model, "coef_"):                    # Linear models
+    if hasattr(model, "coef_"):
         return model.coef_
     return None
 
@@ -136,7 +137,7 @@ def main():
     df.to_csv("preprocessed_data.csv", index=False, encoding="utf-8")
 
     df["label"] = df["label"].map(MAP_LABEL)
-    df = df.dropna(subset=["label"])  # 👈 FIX: Remove rows with unmapped labels
+    df = df.dropna(subset=["label"])  # Remove rows with invalid labels
 
     X_train, X_test, y_train, y_test = train_test_split(
         df["text"], df["label"], test_size=TEST_SIZE, random_state=RANDOM_STATE
@@ -162,6 +163,13 @@ def main():
 
     for name, clf in models:
         evaluate(name, clf, vectorizer, X_train_vec, y_train, X_test_vec, y_test)
+
+    # === Save vectorizer and models ===
+    dump(vectorizer, "vectorizer.joblib")
+    dump(models[0][1], "nb_model.joblib")
+    dump(models[1][1], "lr_model.joblib")
+    dump(models[2][1], "svm_model.joblib")
+    print("✅ Saved vectorizer and all models to .joblib files.")
 
 if __name__ == "__main__":
     main()
