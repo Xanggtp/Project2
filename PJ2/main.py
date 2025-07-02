@@ -136,6 +136,8 @@ def main():
     df.to_csv("preprocessed_data.csv", index=False, encoding="utf-8")
 
     df["label"] = df["label"].map(MAP_LABEL)
+    df = df.dropna(subset=["label"])  # 👈 FIX: Remove rows with unmapped labels
+
     X_train, X_test, y_train, y_test = train_test_split(
         df["text"], df["label"], test_size=TEST_SIZE, random_state=RANDOM_STATE
     )

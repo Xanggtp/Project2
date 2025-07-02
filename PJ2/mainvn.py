@@ -138,9 +138,9 @@ def main():
     X_train_vec, X_test_vec, vectorizer = vectorize_text(X_train, X_test)
 
     models = [
-        ("MultinomialNB", MultinomialNB(alpha=0.1)),
+        ("MultinomialNB_VN", MultinomialNB(alpha=0.1)),
         (
-            "LogisticRegression",
+            "LogisticRegression_VN",
             LogisticRegression(
                 C=1.0,
                 max_iter=1000,
@@ -150,7 +150,7 @@ def main():
                 random_state=RANDOM_STATE,
             ),
         ),
-        ("LinearSVC", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
+        ("LinearSVC_VN", LinearSVC(C=1.0, random_state=RANDOM_STATE)),
     ]
 
     for name, clf in models:
